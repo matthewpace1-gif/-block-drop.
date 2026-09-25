@@ -7,6 +7,11 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0b1020">
 <title>Block Drop</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon-180.png">
+<meta name="apple-mobile-web-app-title" content="Block Drop">
+<meta name="mobile-web-app-capable" content="yes">
+
 <style>
   :root { --bg:#0b1020; --panel:#151d35; --text:#f6f7fb; --muted:#9aa7c7; --accent:#f4d35e; }
   * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
@@ -264,5 +269,14 @@
   requestAnimationFrame(t=>{last=t;requestAnimationFrame(loop);});
 })();
 </script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js').catch(() => {});
+  });
+}
+</script>
+
 </body>
 </html>
